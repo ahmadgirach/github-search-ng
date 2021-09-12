@@ -35,8 +35,10 @@
                     </div>
                     <div class="py-4 flex justify-center items-center w-full divide-x divide-gray-400 divide-solid">
                         <span class="text-center px-2">
-                            <span class="font-bold text-gray-50">{{ profile?.followers || 0 }}</span>
-                            <span class="text-gray-100"> followers</span>
+                            <a class="cursor-pointer" (click)="getFollowers()">
+                                <span class="font-bold text-gray-50">{{ profile?.followers || 0 }}</span>
+                                <span class="text-gray-100"> followers</span>
+                            </a>
                         </span>
                         <span class="text-center px-2">
                             <span class="font-bold text-gray-50">{{ profile?.following || 0 }}</span>

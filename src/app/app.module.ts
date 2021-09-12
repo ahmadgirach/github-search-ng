@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProfileCardModule } from './components/profile-card/profile-card.module';
+import { TableModule } from './components/table/table.module';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { ProfileCardModule } from './components/profile-card/profile-card.module
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
-    ProfileCardModule
+    ProfileCardModule,
+    TableModule
   ],
   providers: [],
   bootstrap: [AppComponent]

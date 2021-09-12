@@ -15,6 +15,7 @@ export class AppComponent {
   profile: any;
   githubStats: string = "";
   githubanguageStats: string = "";
+  followers: any[] = [];
 
   baseStatsEndPoint: string = environment.githubStatsBaseUrl;
 
@@ -69,6 +70,10 @@ export class AppComponent {
       }
       this.showLoader = false;
     }, this.TIMEOUT_IN_MILLISECONDS);
+  }
+
+  setFollowers(followers: any[]) {
+    this.followers = followers;
   }
 
 }
