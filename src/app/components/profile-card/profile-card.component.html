@@ -3,19 +3,19 @@
         <div
             class="card  min-w-sm border border-gray-700 bg-gray-700 text-gray-50 transition-shadow shadow-xl hover:shadow-xl min-w-max">
 
-            <div class="w-full card__media">
+            <div class="w-full">
                 <img src="{{ profile?.avatar_url }}" loading="lazy" class="h-48 w-96" alt="Profile Photo" />
             </div>
 
             <div class="flex items-center p-4">
-                <div class="relative flex flex-col items-center w-full">
+                <div class="relative flex flex-col items-center">
                     <div
                         class="h-24 w-24 md rounded-full relative avatar flex items-end justify-end text-purple-100 min-w-max -top-16 bg-purple-200 row-start-1 row-end-3 text-purple-650 ring-1 ring-white">
                         <img class="h-24 w-24 md rounded-full relative" src="{{ profile?.avatar_url }}" loading="lazy"
                             alt="Profile Photo" />
                         <div class="absolute"></div>
                     </div>
-                    <div class="flex flex-col space-y-1 justify-center items-center -mt-12 w-full">
+                    <div class="flex flex-col space-y-1 justify-center items-center -mt-12">
                         <span class="text-md whitespace-nowrap text-gray-50 font-semibold">
                             {{ profile?.name || "-" }}
                         </span>

@@ -3,7 +3,9 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  githubBaseUrl: "http://api.github.com/users",
+  githubStatsBaseUrl: "https://github-readme-stats.vercel.app/api"
 };
 
 /*

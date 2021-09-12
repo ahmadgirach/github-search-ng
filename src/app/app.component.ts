@@ -1,6 +1,7 @@
 import { Component, HostListener } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { GithubSearchService } from './services/github-search.service';
+import { environment } from '../environments/environment'
 
 @Component({
   selector: 'app-root',
@@ -12,11 +13,19 @@ export class AppComponent {
   username: FormControl = new FormControl("", Validators.compose([Validators.required]));
 
   profile: any;
+  githubStats: string = "";
+  githubanguageStats: string = "";
+
+  baseStatsEndPoint: string = environment.githubStatsBaseUrl;
+
   hasError: boolean = false;
+  showLoader: boolean = false;
 
   errors: any = {
     api: ""
   };
+
+  TIMEOUT_IN_MILLISECONDS: number = 500;
 
   constructor(
     private githubService: GithubSearchService
@@ -42,15 +51,24 @@ export class AppComponent {
     return `Username '${username}' was not found!`;
   }
 
-  async submitForm() {
+  submitForm() {
     this.hasError = false;
+    this.showLoader = true;
+
     const username = this.username.value;
-    const response = await this.githubService.search(username);
-    if (response.ok) {
-      this.profile = await response.json();
-    } else {
-      this.hasError = true;
-      this.errors.api = this.getErrorMessage(username);
-    }
+
+    setTimeout(async () => {
+      const response = await this.githubService.search(username);
+      if (response.ok) {
+        this.profile = await response.json();
+        this.githubStats = `${this.baseStatsEndPoint}/?username=${username}&show_icons=true`;
+        this.githubanguageStats = `${this.baseStatsEndPoint}/top-langs/?username=${username}&layout=compact`;
+      } else {
+        this.hasError = true;
+        this.errors.api = this.getErrorMessage(username);
+      }
+      this.showLoader = false;
+    }, this.TIMEOUT_IN_MILLISECONDS);
   }
+
 }
