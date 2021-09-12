@@ -1,27 +1,36 @@
-<table class="border-collapse w-full">
-    <thead>
-        <tr>
-            <th class="p-3 font-bold bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">
-                Sr. No
-            </th>
-            <th class="p-3 font-bold bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">
-                User
-            </th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr class="bg-white lg:hover:bg-gray-100 flex lg:table-row flex-row lg:flex-row flex-wrap lg:flex-no-wrap mb-10 lg:mb-0"
-            *ngFor="let user of users; index as i">
-            <td
-                class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static">
-                <span class="px-2 py-1 text-xs font-bold">
-                    {{ i + 1 }}
-                </span>
-            </td>
-            <td
-                class="w-full lg:w-auto p-3 text-gray-800 border border-b text-center block lg:table-cell relative lg:static">
-                <span class="px-2 py-1 text-xs font-bold">{{ user?.login }}</span>
-            </td>
-        </tr>
-    </tbody>
-</table>
+<section class="container mx-auto p-6 font-mono">
+    <div class="w-full mb-8 overflow-hidden rounded-lg shadow-lg">
+        <div class="w-full overflow-x-auto">
+            <table class="w-full">
+                <thead>
+                    <tr
+                        class="text-md font-semibold tracking-wide text-center text-gray-900 bg-gray-100 border-b border-gray-600">
+                        <th class="px-4 py-3">Sr. No.</th>
+                        <th class="px-4 py-3">Name</th>
+                    </tr>
+                </thead>
+                <tbody class="bg-white">
+                    <tr class="text-gray-700" *ngFor="let user of users; index as i">
+                        <td class="px-4 py-3 text-center text-ms font-semibold border">{{ i+1 }}</td>
+                        <td class="px-4 py-3 text-center border">
+                            <div class="flex items-center justify-center text-sm">
+                                <div class="relative w-16 h-16 mr-3 rounded-full md:block">
+                                    <img class="object-cover w-full h-full rounded-full" src="{{ user?.avatar_url }}"
+                                        alt="User's Avatar" loading="lazy" />
+                                    <div class="absolute inset-0 rounded-full shadow-inner" aria-hidden="true"></div>
+                                </div>
+                                <div>
+                                    <a class="cursor-pointer" href="{{ user?.html_url }}" rel="noopener norefferer"
+                                        target="_blank">
+                                        <p class="font-semibold text-black">{{ user?.login }}</p>
+                                        <p class="text-xs text-gray-600">Developer</p>
+                                    </a>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
