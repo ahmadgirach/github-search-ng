@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ProfileCardComponent } from './profile-card.component';
+import { LinkModule } from '../link/link.module';
 
 
 
@@ -9,7 +10,8 @@ import { ProfileCardComponent } from './profile-card.component';
     ProfileCardComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    LinkModule
   ],
   exports: [
     ProfileCardComponent

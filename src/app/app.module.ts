@@ -4,8 +4,10 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 import { ProfileCardModule } from './components/profile-card/profile-card.module';
 import { TableModule } from './components/table/table.module';
+import { LinkModule } from './components/link/link.module';
 
 @NgModule({
   declarations: [
@@ -16,7 +18,8 @@ import { TableModule } from './components/table/table.module';
     FormsModule,
     ReactiveFormsModule,
     ProfileCardModule,
-    TableModule
+    TableModule,
+    LinkModule
   ],
   providers: [],
   bootstrap: [AppComponent]
