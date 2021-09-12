@@ -1,58 +1,51 @@
 <div>
-    <div class='flex space-x-2 w-full bg-white shadow-md rounded-lg overflow-hidden mx-auto'>
+    <div class="flex justify-center items-center space-x-2 bg-white shadow-md rounded-lg overflow-hidden mx-auto">
         <div
-            class="card  min-w-sm border border-gray-700 bg-gray-700 text-gray-50 transition-shadow shadow-xl hover:shadow-xl min-w-max">
+            class="border border-gray-700 bg-gray-700 text-gray-50 transition-shadow shadow-xl hover:shadow-xl">
 
-            <div class="w-full">
-                <img src="{{ profile?.avatar_url }}" loading="lazy" class="h-48 w-96" alt="Profile Photo" />
-            </div>
-
-            <div class="flex items-center p-4">
-                <div class="relative flex flex-col items-center">
-                    <div
-                        class="h-24 w-24 md rounded-full relative avatar flex items-end justify-end text-purple-100 min-w-max -top-16 bg-purple-200 row-start-1 row-end-3 text-purple-650 ring-1 ring-white">
-                        <img class="h-24 w-24 md rounded-full relative" src="{{ profile?.avatar_url }}" loading="lazy"
-                            alt="Profile Photo" />
-                        <div class="absolute"></div>
+            <div class="flex flex-col items-center p-4">
+                <div
+                    class="h-24 w-24 md rounded-full avatar flex items-end justify-end text-purple-100 bg-purple-200 row-start-1 row-end-3 text-purple-650 ring-1 ring-white">
+                    <img class="h-24 w-24 md rounded-full" src="{{ profile?.avatar_url }}" loading="lazy"
+                        alt="Profile Photo" />
+                </div>
+                <div class="flex flex-col justify-center items-center space-y-1">
+                    <span class="text-md whitespace-nowrap text-gray-50 font-semibold mt-3">
+                        {{ profile?.name || "-" }}
+                    </span>
+                    <p class="text-sm text-gray-200">
+                        {{ profile?.bio || "-" }}
+                    </p>
+                    <div class="py-2 flex space-x-2">
+                        <a href="{{ profile?.html_url }}" target="_blank" rel="noopener noreferrer"
+                            class="flex justify-center max-h-max whitespace-nowrap focus:outline-none focus:ring focus:border-blue-300 rounded max-w-max border bg-transparent border-purple-400 text-purple-400 hover:border-purple-500 px-4 py-1 items-center hover:shadow-lg">
+                            <span class="mr-2"></span>FOLLOW<span class="ml-2"></span>
+                        </a>
+                        <a href="{{ profile?.html_url }}" target="_blank" rel="noopener noreferrer"
+                            class="flex justify-center max-h-max whitespace-nowrap focus:outline-none focus:ring  focus:border-blue-300 rounded max-w-max text-gray-100 bg-green-500 hover:bg-green-600 px-4 py-1 items-center hover:shadow-lg">
+                            <span class="mr-2"><svg height="20" width="20" viewBox="0 0 32 32"
+                                    class="fill-current text-red-100">
+                                    <path
+                                        d="M22.5,4c-2,0-3.9,0.8-5.3,2.2L16,7.4l-1.1-1.1C12,3.3,7.2,3.3,4.3,6.2c0,0-0.1,0.1-0.1,0.1c-3,3-3,7.8,0,10.8L16,29	l11.8-11.9c3-3,3-7.8,0-10.8C26.4,4.8,24.5,4,22.5,4z">
+                                    </path>
+                                </svg>
+                            </span>SPONSOR
+                            <span class="ml-2"></span>
+                        </a>
                     </div>
-                    <div class="flex flex-col space-y-1 justify-center items-center -mt-12">
-                        <span class="text-md whitespace-nowrap text-gray-50 font-semibold">
-                            {{ profile?.name || "-" }}
+                    <div class="py-4 flex justify-center items-center w-full divide-x divide-gray-400 divide-solid">
+                        <span class="text-center px-2">
+                            <span class="font-bold text-gray-50">{{ profile?.followers || 0 }}</span>
+                            <span class="text-gray-100"> followers</span>
                         </span>
-                        <p class="text-sm text-gray-200">
-                            {{ profile?.bio || "-" }}
-                        </p>
-                        <div class="py-2 flex space-x-2">
-                            <a href="{{ profile?.html_url }}" target="_blank" rel="noopener noreferrer"
-                                class="flex justify-center max-h-max whitespace-nowrap focus:outline-none focus:ring focus:border-blue-300 rounded max-w-max border bg-transparent border-purple-400 text-purple-400 hover:border-purple-500 px-4 py-1 items-center hover:shadow-lg">
-                                <span class="mr-2"></span>FOLLOW<span class="ml-2"></span>
-                            </a>
-                            <a href="{{ profile?.html_url }}" target="_blank" rel="noopener noreferrer"
-                                class="flex justify-center max-h-max whitespace-nowrap focus:outline-none focus:ring  focus:border-blue-300 rounded max-w-max text-gray-100 bg-green-500 hover:bg-green-600 px-4 py-1 items-center hover:shadow-lg">
-                                <span class="mr-2"><svg height="20" width="20" viewBox="0 0 32 32"
-                                        class="fill-current text-red-100">
-                                        <path
-                                            d="M22.5,4c-2,0-3.9,0.8-5.3,2.2L16,7.4l-1.1-1.1C12,3.3,7.2,3.3,4.3,6.2c0,0-0.1,0.1-0.1,0.1c-3,3-3,7.8,0,10.8L16,29	l11.8-11.9c3-3,3-7.8,0-10.8C26.4,4.8,24.5,4,22.5,4z">
-                                        </path>
-                                    </svg>
-                                </span>SPONSOR
-                                <span class="ml-2"></span>
-                            </a>
-                        </div>
-                        <div class="py-4 flex justify-center items-center w-full divide-x divide-gray-400 divide-solid">
-                            <span class="text-center px-2">
-                                <span class="font-bold text-gray-50">{{ profile?.followers || 0 }}</span>
-                                <span class="text-gray-100"> followers</span>
-                            </span>
-                            <span class="text-center px-2">
-                                <span class="font-bold text-gray-50">{{ profile?.following || 0 }}</span>
-                                <span class="text-gray-100"> following</span>
-                            </span>
-                            <span class="text-center px-2">
-                                <span class="font-bold text-gray-50">{{ profile?.public_repos || 0 }}</span>
-                                <span class="text-gray-100"> repos</span>
-                            </span>
-                        </div>
+                        <span class="text-center px-2">
+                            <span class="font-bold text-gray-50">{{ profile?.following || 0 }}</span>
+                            <span class="text-gray-100"> following</span>
+                        </span>
+                        <span class="text-center px-2">
+                            <span class="font-bold text-gray-50">{{ profile?.public_repos || 0 }}</span>
+                            <span class="text-gray-100"> repos</span>
+                        </span>
                     </div>
                 </div>
             </div>
