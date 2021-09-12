@@ -1,49 +1,55 @@
-<body class="p-10 flex flex-col">
-	<div class="container">
-		<form (ngSubmit)="submitForm()">
-			<div class="flex justify-center items-center">
-				<label for="username" class="text-md py-2">github.com/</label>
-				<input id="username"
-					class="py-2 px-4 bg-gray-200 text-gray-800 border-gray-300 rounded-l-md outline-none placeholder-gray-500 focus:bg-gray-100 w-1/4"
-					type="text" name="username" placeholder="Enter GitHub Username (Press / to focus)"
-					[formControl]="username" />
-				<button type="submit"
-					class="py-2 px-4 bg-gray-700 text-gray-100 font-semibold hover:bg-gray-600 rounded-r-md flex justify-between"
-					[disabled]="!isFormValid" [ngClass]="{'cursor-not-allowed opacity-70': !isFormValid}">
-					<ng-container *ngIf="isFormValid && showLoader; else elseTemplate">
-						<div class="w-5 h-5 border-b-2 rounded-full animate-spin mr-2"></div>
-						<div>Search</div>
-					</ng-container>
-					<ng-template #elseTemplate>
-						Search
-					</ng-template>
-				</button>
+<body class="p-10">
+	<div class="flex flex-col h-full">
+		<header>
+			<form (ngSubmit)="submitForm()">
+				<div class="flex justify-center items-center">
+					<label for="username" class="text-md py-2">github.com/</label>
+					<input id="username"
+						class="py-2 px-4 bg-gray-200 text-gray-800 border-gray-300 rounded-l-md outline-none placeholder-gray-500 focus:bg-gray-100 w-1/4"
+						type="text" name="username" placeholder="Enter GitHub Username (Press / to focus)"
+						[formControl]="username" />
+					<button type="submit"
+						class="py-2 px-4 bg-gray-700 text-gray-100 font-semibold hover:bg-gray-600 rounded-r-md flex justify-between"
+						[disabled]="!isFormValid" [ngClass]="{'cursor-not-allowed opacity-70': !isFormValid}">
+						<ng-container *ngIf="isFormValid && showLoader; else elseTemplate">
+							<div class="w-5 h-5 border-b-2 rounded-full animate-spin mr-2"></div>
+							<div>Search</div>
+						</ng-container>
+						<ng-template #elseTemplate>
+							Search
+						</ng-template>
+					</button>
+				</div>
+				<span *ngIf="hasError" class="flex justify-center text-red-500 text-sm mt-3">{{ errors.api }}</span>
+			</form>
+		</header>
+
+		<main class="flex-1 overflow-auto">
+			<section class="h-full overflow-auto">
+				<div *ngIf="profile && !hasError" class="flex justify-between items-center mt-5">
+					<app-profile-card [profile]="profile"></app-profile-card>
+					<img *ngIf="githubStats" src="{{ githubStats }}" alt="Your GitHub Stats" loading="lazy" />
+					<img *ngIf="githubanguageStats" src="{{ githubanguageStats }}" alt="Your GitHub Top Languages Stats"
+						loading="lazy" />
+				</div>
+			</section>
+		</main>
+
+		<footer class="flex justify-center items-center flex-col">
+			<div>
+				Profile Card by
+				<a class="text-purple-600" href="https://tailwindcomponents.com/u/ibraboussadjra"
+					rel="noopener noreferrer" target="_blank">
+					IbraBoussadjra
+				</a>
 			</div>
-			<span *ngIf="hasError" class="flex justify-center text-red-500 text-sm mt-3">{{ errors.api }}</span>
-		</form>
-
-		<div *ngIf="profile && !hasError" class="flex justify-between items-center mt-5">
-			<app-profile-card [profile]="profile"></app-profile-card>
-			<img *ngIf="githubStats" src="{{ githubStats }}" alt="Your GitHub Stats" loading="lazy" />
-			<img *ngIf="githubanguageStats" src="{{ githubanguageStats }}" alt="Your GitHub Top Languages Stats"
-				loading="lazy" />
-		</div>
+			<div>
+				GitHub stats by
+				<a class="text-purple-600" href="https://github.com/anuraghazra/github-readme-stats"
+					rel="noopener noreferrer" target="_blank">
+					Anurag Hazra
+				</a>
+			</div>
+		</footer>
 	</div>
-
-	<footer class="flex justify-center items-center flex-col">
-		<div>
-			Profile Card by
-			<a class="text-purple-600" href="https://tailwindcomponents.com/u/ibraboussadjra"
-				rel="noopener noreferrer" target="_blank">
-				IbraBoussadjra
-			</a>
-		</div>
-		<div>
-			GitHub stats by
-			<a class="text-purple-600" href="https://github.com/anuraghazra/github-readme-stats"
-				rel="noopener noreferrer" target="_blank">
-				Anurag Hazra
-			</a>
-		</div>
-	</footer>
 </body>
