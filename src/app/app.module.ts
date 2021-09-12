@@ -3,7 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 
-import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProfileCardModule } from './components/profile-card/profile-card.module';
 
@@ -13,7 +12,6 @@ import { ProfileCardModule } from './components/profile-card/profile-card.module
   ],
   imports: [
     BrowserModule,
-    HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
     ProfileCardModule

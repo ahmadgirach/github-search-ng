@@ -1,20 +1,21 @@
 <body class="p-10">
 	<form (ngSubmit)="submitForm()">
-		<div class="flex justify-center">
+		<div class="flex justify-center items-center">
+			<label for="username" class="text-md py-3">github.com/</label>
 			<input id="username"
-				class="py-3 px-4 bg-gray-200 text-gray-800 border-gray-300 border-2 outline-none placeholder-gray-500 focus:bg-gray-100 w-1/4"
+				class="py-2 px-4 bg-gray-200 text-gray-800 border-gray-300 rounded-l-md outline-none placeholder-gray-500 focus:bg-gray-100 w-1/4"
 				type="text" name="username" placeholder="Enter GitHub Username (Press / to focus)"
 				[formControl]="username" />
 			<button type="submit"
-				class="py-3 px-4 bg-gray-700 text-gray-100 font-semibold uppercase hover:bg-gray-600 rounded-r-md"
+				class="py-2 px-4 bg-gray-700 text-gray-100 font-semibold hover:bg-gray-600 rounded-r-md"
 				[disabled]="!isFormValid" [ngClass]="{'cursor-not-allowed opacity-70': !isFormValid}">
 				Search
 			</button>
 		</div>
-		<span *ngIf="errors.api" class="flex justify-center text-red-500 text-md">{{ errors.api }}</span>
+		<span *ngIf="hasError" class="flex justify-center text-red-500 text-sm">{{ errors.api }}</span>
 	</form>
 
-	<div *ngIf="profile" class="flex justify-between items-center mt-5">
+	<div *ngIf="profile && !hasError" class="flex justify-between items-center mt-5">
 		<app-profile-card [profile]="profile"></app-profile-card>
 		<img src="https://github-readme-stats.vercel.app/api?username={{ username.value }}&show_icons=true"
 			alt="Your GitHub Stats" loading="lazy" />

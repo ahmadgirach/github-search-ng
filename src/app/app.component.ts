@@ -12,6 +12,7 @@ export class AppComponent {
   username: FormControl = new FormControl("", Validators.compose([Validators.required]));
 
   profile: any;
+  hasError: boolean = false;
 
   errors: any = {
     api: ""
@@ -38,20 +39,17 @@ export class AppComponent {
   }
 
   getErrorMessage(username: string): string {
-    return `Something went wrong while fetching user '${username}'`;
+    return `Username '${username}' was not found!`;
   }
 
-  submitForm() {
+  async submitForm() {
+    this.hasError = false;
     const username = this.username.value;
-    try {
-      this.githubService.search(username).subscribe((response: any) => {
-        if (response) {
-          this.profile = response;
-        } else {
-          this.errors.api = this.getErrorMessage(username);
-        }
-      });
-    } catch (error) {
+    const response = await this.githubService.search(username);
+    if (response.ok) {
+      this.profile = await response.json();
+    } else {
+      this.hasError = true;
       this.errors.api = this.getErrorMessage(username);
     }
   }
