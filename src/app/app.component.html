@@ -36,26 +36,24 @@
 
 			<section class="mt-5" *ngIf="followers?.length">
 				<app-table [users]="followers"></app-table>
+				<app-pagination [records]="followers"></app-pagination>
 			</section>
 		</main>
 
 		<footer class="flex items-center flex-col">
 			<div>
 				Profile Card by
-				<app-link class="text-purple-700 hover:text-purple-500"
-					[to]="'https://tailwindcomponents.com/u/ibraboussadjra'" [label]="'IbraBoussadjra'">
+				<app-link [to]="'https://tailwindcomponents.com/u/ibraboussadjra'" [label]="'IbraBoussadjra'">
 				</app-link>
 			</div>
 			<div>
 				GitHub stats by
-				<app-link class="text-purple-700 hover:text-purple-500"
-					[to]="'https://github.com/anuraghazra/github-readme-stats'" [label]="'Anurag Hazra'">
+				<app-link [to]="'https://github.com/anuraghazra/github-readme-stats'" [label]="'Anurag Hazra'">
 				</app-link>
 			</div>
 			<div>
 				Table by
-				<app-link class="text-purple-700 hover:text-purple-500"
-					[to]="'https://tailwindcomponents.com/u/sufyan-farea'" [label]="'Sufyan Farea'">
+				<app-link [to]="'https://tailwindcomponents.com/u/sufyan-farea'" [label]="'Sufyan Farea'">
 				</app-link>
 			</div>
 		</footer>

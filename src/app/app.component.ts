@@ -55,6 +55,7 @@ export class AppComponent {
   submitForm() {
     this.hasError = false;
     this.showLoader = true;
+    this.followers = [];
 
     const username = this.username.value;
 

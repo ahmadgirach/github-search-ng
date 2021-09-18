@@ -8,6 +8,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProfileCardModule } from './components/profile-card/profile-card.module';
 import { TableModule } from './components/table/table.module';
 import { LinkModule } from './components/link/link.module';
+import { PaginationModule } from './components/pagination/pagination.module';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { LinkModule } from './components/link/link.module';
     ReactiveFormsModule,
     ProfileCardModule,
     TableModule,
-    LinkModule
+    LinkModule,
+    PaginationModule
   ],
   providers: [],
   bootstrap: [AppComponent]
