@@ -41,21 +41,17 @@
 		</main>
 
 		<footer class="flex items-center flex-col">
-			<div>
-				Profile Card by
-				<app-link [to]="'https://tailwindcomponents.com/u/ibraboussadjra'" [label]="'IbraBoussadjra'">
-				</app-link>
-			</div>
-			<div>
-				GitHub stats by
-				<app-link [to]="'https://github.com/anuraghazra/github-readme-stats'" [label]="'Anurag Hazra'">
-				</app-link>
-			</div>
-			<div>
-				Table by
-				<app-link [to]="'https://tailwindcomponents.com/u/sufyan-farea'" [label]="'Sufyan Farea'">
-				</app-link>
-			</div>
+			<app-link [to]="'https://tailwindcomponents.com/u/ibraboussadjra'" [label]="'Profile Card by'"
+				[author]="'IbraBoussadjra'">
+			</app-link>
+
+			<app-link [to]="'https://github.com/anuraghazra/github-readme-stats'" [label]="'GitHub stats by'"
+				[author]="'Anurag Hazra'">
+			</app-link>
+
+			<app-link [to]="'https://tailwindcomponents.com/u/ibraboussadjra'" [label]="'Table by'"
+				[author]="'Sufyan Farea'">
+			</app-link>
 		</footer>
 	</div>
 </body>

@@ -9,6 +9,7 @@ export class LinkComponent implements OnInit {
 
   @Input() to: string = "";
   @Input() label: string = "";
+  @Input() author: string = "";
 
   constructor() { }
 
