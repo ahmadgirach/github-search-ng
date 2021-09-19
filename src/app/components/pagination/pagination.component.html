@@ -9,9 +9,9 @@
             </svg>
         </div>
         <div class="flex h-12 font-medium rounded-full bg-gray-200">
-            <div *ngFor="let record of records; let i=index"
+            <div *ngFor="let index in pagination"
                 class="w-12 md:flex justify-center items-center hidden cursor-pointer leading-5 transition duration-150 ease-in rounded-full hover:bg-purple-500 hover:text-white">
-                {{ i + 1 }}
+                {{ index + 1 }}
             </div>
         </div>
         <div
