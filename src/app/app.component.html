@@ -35,6 +35,7 @@
 			</section>
 
 			<section class="mt-5" *ngIf="followers?.length">
+				<h3 class="text-center font-bold text-purple-500 text-xl">Followers</h3>
 				<app-table [users]="followers"></app-table>
 				<app-pagination [records]="followers"></app-pagination>
 			</section>
