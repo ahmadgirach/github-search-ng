@@ -28,6 +28,8 @@ export class AppComponent {
 
   TIMEOUT_IN_MILLISECONDS: number = 500;
 
+  currentYear: number = new Date().getFullYear();
+
   constructor(
     private githubService: GithubSearchService
   ) { }

@@ -1,62 +1,69 @@
-<body class="p-10">
-	<div class="flex flex-col h-full">
-		<header>
-			<form (ngSubmit)="submitForm()">
-				<div class="flex justify-center items-center">
-					<label for="username" class="text-md py-2">github.com/</label>
-					<input id="username"
-						class="py-2 px-4 bg-gray-200 text-gray-800 border-gray-300 rounded-l-md outline-none placeholder-gray-500 focus:bg-gray-100 w-1/4"
-						type="text" name="username" placeholder="Enter GitHub Username (Press / to focus)"
-						[formControl]="username" />
-					<button type="submit"
-						class="py-2 px-4 bg-gray-700 text-gray-100 font-semibold hover:bg-gray-600 rounded-r-md flex justify-between"
-						[disabled]="!isFormValid" [ngClass]="{'cursor-not-allowed opacity-70': !isFormValid}">
-						<ng-container *ngIf="isFormValid && showLoader; else elseTemplate">
-							<div class="w-5 h-5 border-b-2 rounded-full animate-spin mr-2"></div>
-							<div>Search</div>
-						</ng-container>
-						<ng-template #elseTemplate>
-							Search
-						</ng-template>
-					</button>
-				</div>
-				<span *ngIf="hasError" class="flex justify-center text-red-500 text-sm mt-3">{{ errors.api }}</span>
-			</form>
-		</header>
+<body class="container mx-auto">
+  <div class="flex flex-col justify-center items-center min-h-screen">
+    <main class="flex justify-center items-center py-5 w-full">
+      <div class="w-full">
+        <form (ngSubmit)="submitForm()">
+          <div class="flex justify-center items-center">
+            <label for="username" class="text-md py-2">github.com/</label>
+            <input id="username"
+              class="py-2 px-4 bg-gray-200 text-gray-800 border-gray-300 rounded-l-md outline-none placeholder-gray-500 focus:bg-gray-100 w-1/4"
+              type="text" name="username" placeholder="Enter GitHub Username (Press / to focus)"
+              [formControl]="username" />
+            <button type="submit"
+              class="py-2 px-4 bg-gray-700 text-gray-100 font-semibold hover:bg-gray-600 rounded-r-md flex justify-between transition"
+              [disabled]="!isFormValid" [ngClass]="{'cursor-not-allowed opacity-70': !isFormValid}">
+              <ng-container *ngIf="isFormValid && showLoader; else elseTemplate">
+                <div class="w-5 h-5 border-b-2 rounded-full animate-spin mr-2"></div>
+                <div>Search</div>
+              </ng-container>
+              <ng-template #elseTemplate>
+                Search
+              </ng-template>
+            </button>
+          </div>
+          <span *ngIf="hasError" class="flex justify-center items-center text-red-500 text-sm mt-3">
+            {{ errors.api }}
+          </span>
+        </form>
+      </div>
+    </main>
 
-		<main class="flex-1 overflow-auto">
-			<section class="h-full overflow-auto">
-				<div *ngIf="profile && !hasError" class="flex justify-between items-center mt-5">
-					<app-profile-card [profile]="profile" (receiveFollowers)="setFollowers($event)"></app-profile-card>
-					<img *ngIf="githubStats" src="{{ githubStats }}" alt="Your GitHub Stats" loading="lazy" />
-					<img *ngIf="githubanguageStats" src="{{ githubanguageStats }}" alt="Your GitHub Top Languages Stats"
-						loading="lazy" />
-				</div>
-			</section>
+    <section class="flex-1">
+      <div *ngIf="profile && !hasError" class="flex justify-evenly items-center mt-5 gap-5 flex-col xl:flex-row">
+        <app-profile-card *ngIf="githubStats && githubanguageStats" [profile]="profile"
+          (receiveFollowers)="setFollowers($event)"></app-profile-card>
+        <img class="object-cover object-center" *ngIf="githubStats" src="{{ githubStats }}" alt="Your GitHub Stats"
+          loading="lazy" />
+        <img class="object-cover object-center" *ngIf="githubanguageStats" src="{{ githubanguageStats }}"
+          alt="Your GitHub Top Languages Stats" loading="lazy" />
+      </div>
 
-			<section class="mt-5" *ngIf="followers?.length">
-				<h3 class="text-center font-bold text-purple-500 text-xl">Followers</h3>
-				<app-table [users]="followers"></app-table>
-				<app-pagination [records]="followers"></app-pagination>
-			</section>
-		</main>
+      <div class="mt-5" *ngIf="followers?.length">
+        <h3 class="text-center font-bold text-purple-500 text-xl">Followers</h3>
+        <app-table [users]="followers"></app-table>
+        <app-pagination [records]="followers"></app-pagination>
+      </div>
+    </section>
 
-		<footer class="flex items-center flex-col">
-			<app-link [to]="'https://tailwindcomponents.com/u/ibraboussadjra'" [label]="'Profile Card by'"
-				[author]="'IbraBoussadjra'">
-			</app-link>
+    <footer class="mx-auto my-3 flex flex-col gap-y-1 text-sm">
+      <app-link class="mt-2" [to]="'https://ahmadgirach.github.io'" label="&copy; {{ currentYear }}"
+        [author]="'Ahmad Girach'">
+      </app-link>
 
-			<app-link [to]="'https://github.com/anuraghazra/github-readme-stats'" [label]="'GitHub stats by'"
-				[author]="'Anurag Hazra'">
-			</app-link>
+      <app-link [to]="'https://tailwindcomponents.com/u/ibraboussadjra'" [label]="'Profile Card by'"
+        [author]="'IbraBoussadjra'">
+      </app-link>
 
-			<app-link [to]="'https://tailwindcomponents.com/u/ibraboussadjra'" [label]="'Table by'"
-				[author]="'Sufyan Farea'">
-			</app-link>
+      <app-link [to]="'https://github.com/anuraghazra/github-readme-stats'" [label]="'GitHub stats by'"
+        [author]="'Anurag Hazra'">
+      </app-link>
 
-			<app-link [to]="'https://tailwindcomponents.com/component/pagination-example'" [label]="'Pagination by'"
-				[author]="'haynajjar'">
-			</app-link>
-		</footer>
-	</div>
+      <app-link [to]="'https://tailwindcomponents.com/u/ibraboussadjra'" [label]="'Table by'" [author]="'Sufyan Farea'">
+      </app-link>
+
+      <app-link [to]="'https://tailwindcomponents.com/component/pagination-example'" [label]="'Pagination by'"
+        [author]="'haynajjar'">
+      </app-link>
+    </footer>
+  </div>
 </body>
