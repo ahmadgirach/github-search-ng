@@ -1,4 +1,4 @@
-<body class="container mx-auto">
+<body class="container max-w-screen-2xl">
   <div class="flex flex-col justify-center items-center min-h-screen">
     <main class="flex justify-center items-center py-5 w-full">
       <div class="w-full">
@@ -28,29 +28,25 @@
       </div>
     </main>
 
-    <section class="flex-1">
-      <div *ngIf="profile && !hasError" class="flex justify-evenly items-center mt-5 gap-5 flex-col xl:flex-row">
-        <app-profile-card *ngIf="githubStats && githubanguageStats" [profile]="profile"
+    <section class="flex justify-evenly flex-1">
+      <div *ngIf="profile && !hasError" class="flex justify-center items-center mt-5 gap-5 flex-col">
+        <app-profile-card class="max-w-md md:w-full" *ngIf="githubStats && githubanguageStats" [profile]="profile"
           (receiveFollowers)="setFollowers($event)"></app-profile-card>
-        <img class="object-cover object-center" *ngIf="githubStats" src="{{ githubStats }}" alt="Your GitHub Stats"
-          loading="lazy" />
-        <img class="object-cover object-center" *ngIf="githubanguageStats" src="{{ githubanguageStats }}"
-          alt="Your GitHub Top Languages Stats" loading="lazy" />
+        <img class="max-w-md object-cover object-center" *ngIf="githubStats" src="{{ githubStats }}"
+          alt="Your GitHub Stats" loading="lazy" />
+        <img class="max-w-md object-cover object-center md:w-full" *ngIf="githubanguageStats"
+          src="{{ githubanguageStats }}" alt="Your GitHub Top Languages Stats" loading="lazy" />
       </div>
 
       <div class="mt-5" *ngIf="followers?.length">
-        <h3 class="text-center font-bold text-purple-500 text-xl">Followers</h3>
+        <h3 class="text-center font-semibold text-purple-500 text-xl">Followers</h3>
         <app-table [users]="followers"></app-table>
         <app-pagination [records]="followers"></app-pagination>
       </div>
     </section>
 
     <footer class="mx-auto my-3 flex flex-col gap-y-1 text-sm">
-      <app-link class="mt-2" [to]="'https://ahmadgirach.github.io'" label="&copy; {{ currentYear }}"
-        [author]="'Ahmad Girach'">
-      </app-link>
-
-      <app-link [to]="'https://tailwindcomponents.com/u/ibraboussadjra'" [label]="'Profile Card by'"
+      <app-link class="mt-2" [to]="'https://tailwindcomponents.com/u/ibraboussadjra'" [label]="'Profile Card by'"
         [author]="'IbraBoussadjra'">
       </app-link>
 
