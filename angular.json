@@ -102,5 +102,8 @@
       }
     }
   },
-  "defaultProject": "github-search-ng"
+  "defaultProject": "github-search-ng",
+  "cli": {
+    "analytics": false
+  }
 }
